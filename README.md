@@ -45,3 +45,5 @@ Using an object-orieneted approach, create a tic-tac-toe game to practice JavaSc
   var game = new Game();
   game.init();
   ```
+
+  completed with Lance on Aug 6
