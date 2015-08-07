@@ -40,15 +40,19 @@ Board.prototype.createCells = function(){
 
 Board.prototype.winCondition = function(){
   var winConditions =
-  [[this.cells[0],this.cells[1],this.cells[2]],
+  [
+  [this.cells[0],this.cells[1],this.cells[2]],
   [this.cells[3],this.cells[4],this.cells[5]],
   [this.cells[6],this.cells[7],this.cells[8]],
   [this.cells[0],this.cells[3],this.cells[6]],
   [this.cells[1],this.cells[4],this.cells[7]],
   [this.cells[2],this.cells[5],this.cells[8]],
   [this.cells[0],this.cells[4],this.cells[8]],
-  [this.cells[2],this.cells[4],this.cells[6]]];
-  if(this.moveCount >= 9){ alert('Draw')}; //resetBoard()
+  [this.cells[2],this.cells[4],this.cells[6]]
+  ];
+
+  if(this.moveCount >= 9){ alert('Draw')};
+  console.log("Moves: "+this.moveCount); //resetBoard()
    for (var i = 0; i < winConditions.length; i++){
       var winCheck = this.checkWinner(winConditions[i]);
       if (winCheck){game.updateScore()};
@@ -71,7 +75,9 @@ Game.prototype.resetBoard =function(){
 Game.prototype.nextPlayer = function(){
  this.board.moveCount ++;
  this.board.winCondition();
- if (this.turnCounter === 0){ this.turnCounter = 1 } else {this.turnCounter = 0};
+ console.log(this.turnCounter);
+ if (this.turnCounter === 0) this.turnCounter = 1;
+ else this.turnCounter = 0;
 }
 Game.prototype.updateScore = function(){
   var winner = this.players[this.turnCounter];
@@ -83,6 +89,10 @@ Game.prototype.updateScore = function(){
 Game.prototype.updateDom = function (string) {
   for (var i = 0; i < this.board.cells.length; i++) {
     $("#"+i).html(string);
-  }  // body...
+  }
 };
-var game = new Game();
+
+
+// module.export = {
+//   Game : Game
+// }
