@@ -23,7 +23,7 @@ function Cell(id){
   });
 }
 
-function Player(id,$cellID){
+function Player(id,2){
   this.id = id;
   this.$cellID = $cellID;
   this.score = 0;
@@ -68,14 +68,13 @@ Board.prototype.checkWinner = function(arr){
   }
   return true;
 }
-Game.prototype.resetBoard =function(){
+Game.prototype.resetBoard = function(){
   this.board = new Board();
   this.updateDom('&nbsp;');
 }
 Game.prototype.nextPlayer = function(){
  this.board.moveCount ++;
  this.board.winCondition();
- console.log(this.turnCounter);
  if (this.turnCounter === 0) this.turnCounter = 1;
  else this.turnCounter = 0;
 }
@@ -93,6 +92,4 @@ Game.prototype.updateDom = function (string) {
 };
 
 
-// module.export = {
-//   Game : Game
-// }
+var game = new Game();
