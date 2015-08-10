@@ -23,7 +23,7 @@ function Cell(id){
   });
 }
 
-function Player(id,2){
+function Player(id, $cellID){
   this.id = id;
   this.$cellID = $cellID;
   this.score = 0;
